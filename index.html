@@ -8,7 +8,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="viewport" content = "width = device-width, initial-scale = 1, user-scalable = no" />
     <link href='./img/kyros_v2.png' rel='shortcut icon' type='image/png'>
-    <link href="css/freeboard.min.css" rel="stylesheet" />
+    <!--link href="css/freeboard.min.css" rel="stylesheet" /-->
+    <link href="css/freeboard.css" rel="stylesheet" />
     <link href="css/kyros_dashboard.css?1" rel="stylesheet" />
     <script src="js/freeboard.thirdparty.min.js"></script>
     <script type="text/javascript">
@@ -41,7 +42,7 @@
     </div>
 </div>
 <header id="main-header" data-bind="if:allow_edit">
-    <div id="admin-bar">
+    <div id="admin-bar" style="height:160px">
         <div id="admin-menu">
             <div id="board-tools">
                 <h1 id="board-logo" class="title"><img src="./img/kyros_v2.svg" width="50" height="50"/>&nbsp;&nbsp;Kyros Dashboard
@@ -50,11 +51,11 @@
                 <div id="board-actions">
                     <ul class="board-toolbar vertical">
                         <li data-bind="click: loadDashboardFromLocalFile"><i id="full-screen-icon" class="icon-folder-open icon-white"></i><label id="full-screen">Cargar dashboard</label></li>
-                        <li><i class="icon-download-alt icon-white"></i>
+                        <!--li><i class="icon-download-alt icon-white"></i>
                             <label data-bind="click: saveDashboardClicked">Guardar dashboard</label>
                             <label style="display: none;" data-bind="click: saveDashboard" data-pretty="true">[Pretty]</label>
                             <label style="display: none;" data-bind="click: saveDashboard" data-pretty="false">[Minified]</label>
-                        </li>
+                        </li-->
                         <li id="add-pane" data-bind="click: createPane"><i class="icon-plus icon-white"></i><label>Añadir panel</label></li>
                     </ul>
                 </div>
@@ -89,7 +90,7 @@
                         </tbody>
                     </table>
                 </div>
-                <span class="text-button table-operation" data-bind="pluginEditor: {operation: 'add', type: 'datasource'}">ADD</span>
+                <!--span class="text-button table-operation" data-bind="pluginEditor: {operation: 'add', type: 'datasource'}">ADD</span-->
             </div>
         </div>
     </div>

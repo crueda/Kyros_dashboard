@@ -1154,7 +1154,8 @@ header h1 {
 }
 
 #admin-bar {
-	background-color: #313131;
+  //background-color: #313131;
+  background-color: #005091;
 	width: 100%;
 	height: 200px;
 	position: relative;
