@@ -31,9 +31,26 @@
 
                     });
                 });
+
+
+    function loadDashboardFromUrl0()
+    {
+        url = "http://localhost:9088/kyrosDashboard/dashboards/d1.json";
+
+        $.getJSON( url, function( data ) {
+console.log(data);
+
+        //var jsonObject = JSON.parse(data);
+
+        self.loadDashboard(data);
+        self.setEditing(false);                 
+
+        });
+    }
+
     </script>
 </head>
-<body>
+<body >
 <div id="board-content">
     <img id="dash-logo" data-bind="attr:{src: header_image}, visible:header_image()">
     <div class="gridster responsive-column-width">
