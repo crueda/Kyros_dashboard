@@ -495,18 +495,8 @@ function FreeboardModel(datasourcePlugins, widgetPlugins, freeboardUI)
 		});
 	}
 
-/*
-       url = "http://localhost:9088/kyrosDashboard/dashboards/d1.json";
-        $.getJSON( url, function( data ) {
-        self.loadDashboard(data);
-        self.setEditing(false);                 
 
-        });
-*/
-
-
-
-	this.loadDashboardFromLocalFile0 = function()
+	this.loadDashboardFromLocalFile = function()
 	{
 		// Check for the various File API support.
 		if(window.File && window.FileReader && window.FileList && window.Blob)
@@ -545,24 +535,7 @@ function FreeboardModel(datasourcePlugins, widgetPlugins, freeboardUI)
 		}
 	}
 
-	this.loadDashboardFromLocalFile = function()
-	{
-
-console.log("-->");
-			$(input).on("change", function(event)
-			{
-console.log("-2->");
-				url = "http://localhost:9088/kyrosDashboard/dashboards/d1.json";
-        $.getJSON( url, function( data ) {
-        self.loadDashboard(data);
-        self.setEditing(false);                 
-
-        });
-
-			});
-			$(input).trigger("click");
-		
-	}
+	
 
 	this.saveDashboardClicked = function(){
 		var target = $(event.currentTarget);

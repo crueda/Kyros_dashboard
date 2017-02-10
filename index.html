@@ -13,6 +13,29 @@
     <link href="css/kyros_dashboard.css?1" rel="stylesheet" />
     <script src="js/freeboard.thirdparty.min.js"></script>
     <script type="text/javascript">
+
+        function getGETdashboard() {
+            // capturamos la url
+            var loc = document.location.href;
+            // si existe el interrogante
+            if(loc.indexOf('?')>0) {
+              // cogemos la parte de la url que hay despues del interrogante
+              var getString = loc.split('?')[1];
+              // obtenemos un array con cada clave=valor
+              var GET = getString.split('&');
+              var get = {};
+
+              // recorremos todo el array de valores
+              for(var i = 0, l = GET.length; i < l; i++){
+                var tmp = GET[i].split('=');
+                get[tmp[0]] = unescape(decodeURI(tmp[1]));
+                if (unescape(decodeURI(tmp[0])) == 'dashboard')
+                  return unescape(decodeURI(tmp[1]));
+              }
+              return null;
+            }
+        }
+
         head.js("js/freeboard+plugins.js",
                 // *** Load more plugins here ***
                 function(){
@@ -27,30 +50,24 @@
                                     freeboard.setEditing(false);
                                 });
                             });
+                        } else {
+                            url = "./dashboards/"+getGETdashboard();
+                            //url = "./dashboards/d1.json";
+                            $.getJSON( url, function( data ) {
+                                freeboard.loadDashboard(data);
+                                freeboard.setEditing(false);                 
+                            });
                         }
 
                     });
                 });
 
 
-    function loadDashboardFromUrl0()
-    {
-        url = "http://localhost:9088/kyrosDashboard/dashboards/d1.json";
-
-        $.getJSON( url, function( data ) {
-console.log(data);
-
-        //var jsonObject = JSON.parse(data);
-
-        self.loadDashboard(data);
-        self.setEditing(false);                 
-
-        });
-    }
+   
 
     </script>
 </head>
-<body >
+<body>
 <div id="board-content">
     <img id="dash-logo" data-bind="attr:{src: header_image}, visible:header_image()">
     <div class="gridster responsive-column-width">
@@ -58,7 +75,7 @@ console.log(data);
         </ul>
     </div>
 </div>
-<header id="main-header" data-bind="if:allow_edit">
+<header id="main-header" data-bind="if:allow_edit" >
     <div id="admin-bar" style="height:160px">
         <div id="admin-menu">
             <div id="board-tools">
